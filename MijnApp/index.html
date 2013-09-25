@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="static/css/style.css" rel="stylesheet" type="text/css" />
+	<title>Jurian Applicatie</title>
+
+
+</head>
+<body>
+	<header>
+		<h1>Web App Skeleton</h1>
+		<nav>
+			<ul>
+				<li><a href="#/ranking" data>Pagina 1</a></li>
+				<li><a href="#/schedule">Pagina 2</a></li>
+				<li><a href="#/game">Pagina 3</a></li>
+		    </ul>
+		</nav>
+	</header>
+	
+	<article id="content" class="col">
+
+		<section data-route="ranking" class="page active">
+
+			<h1 data-bind="title"></h1>
+			<p data-bind="description"></p>
+
+
+			<table id="state">
+			<tr>
+                    <th>Team</th>
+                    <th>W</th>
+                    <th>L</th>
+                    <th>SL</th>
+                    <th>SW</th>
+                    <th>Points won</th>
+                    <th>Points lost</th>
+                </tr>
+             </table>
+
+			 <section data-bind="items">
+			 <table>
+                <tr>
+                    <th data-bind="team"></th>
+                    <th data-bind="Win"></th>
+                    <th data-bind="Lost">L</th>
+                    <th data-bind="Sw"></th>
+                    <th data-bind="Sl"></th>
+                    <th data-bind="Pw"></th>
+                    <th data-bind="Pl"></th>
+
+                </tr>
+
+            </table>
+
+			  </section>
+
+		</section>
+
+		<section data-route="schedule" class="page">
+			<h1 data-bind="title"></h1>
+			<p data-bind="description"></p>
+
+			<table id="state">
+			<tr>
+                    <th>Dag</th>
+                    <th>Thuis-team</th>
+                    <th>Thuis-team score</th>
+                    <th>Uit-team</th>
+                    <th>Uit-team score</th>
+                </tr>
+             </table>
+
+
+			 <section data-bind="items">
+			 <table>
+
+                  <tr>
+                    <th data-bind="date"></th>
+                    <th data-bind="team1"></th>
+                    <th data-bind="team1Score">L</th>
+                    <th data-bind="team2"></th>
+                    <th data-bind="team2Score"></th>
+
+                </tr>
+
+            </table>
+
+			  </section>
+		</section>
+
+		<section data-route="game" class="page">
+			<h1 data-bind="title"></h1>
+			<p data-bind="description"></p>
+
+			<table id="state">
+			<tr>
+                    <th>Score</th>
+                    <th>Thuis-team</th>
+                    <th>Score thuis-team</th>
+                    <th>Uit-team</th>
+                    <th>Score uit-team</th>
+                </tr>
+             </table>
+
+
+			 <section data-bind="items">
+			 <table>
+                <tr>
+                    <th data-bind="score"></th>
+                    <th data-bind="team1"></th>
+                    <th data-bind="team1Score">L</th>
+                    <th data-bind="team2"></th>
+                    <th data-bind="team2Score"></th>
+
+                </tr>
+
+            </table>
+
+			  </section>
+
+
+		</section>
+	</article>
+
+	<!-- Libs -->
+	<script src="static/js/lib/routie.min.js"></script>
+	<script src="static/js/lib/ready.min.js" type="text/javascript"></script>
+	<script src="static/js/lib/qwery.min.js" type="text/javascript"></script>
+	<script src="static/js/lib/transparancy.min.js" type="text/javascript"></script>
+
+	<!-- Application -->
+	<script src="static/js/app.js"></script>
+	
+</body>
+</html>

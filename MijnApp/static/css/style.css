@@ -1,0 +1,41 @@
+	 section.page{
+	 	display:none;
+	 }
+	 section.page.active{
+	 	display:block;
+	 }
+
+table#state th {
+	background-color: #FF9999;
+}
+
+table {
+	width:90%;
+}
+	 
+	
+
+section	table th:first-child {
+	 	width:25%;
+	 	min-width: 220px;
+	 	background-color: #FF0000;
+	 }
+
+section	table th:not(:first-child) {
+    	background-color: #FF0000;
+	 	width:10%;
+}
+
+
+
+
+section + section table th:first-child {
+		background-color: #FF0000;
+	 	width:1%;
+	 	min-width: 120px;
+	 }
+
+section  + section	table th:not(:first-child) {
+    	background-color: #FF0000;
+}
+
