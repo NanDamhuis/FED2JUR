@@ -8,23 +8,11 @@ var APP = APP || {};
 
 
     APP.schedule = {
-        title:'Schedule',
-        description:'Hieronder ziet u het schema van het toernooi.',
-        items: [
-            { date: "Monday", team1: "Chasing", team1Score: "13", team2: "Amsterdam Money Gang", team2Score: "9"}
-        ]
+       
     };
 
     APP.ranking = {
-        title:'Ranking',
-        description:'Hieronder ziet u de ranglijst van het tournooi.',
-        items: [
-            { team: "Chasing", Win: "2", Lost: "2", Sw: "7", Sl: "9", Pw: "35", Pl: "39"},
-        { team: "Boomsquad", Win: "2", Lost: "2", Sw: "9", Sl: "8", Pw: "36", Pl: "34"},
-        { team: "Burning Snow", Win: "3", Lost: "1", Sw: "11", Sl: "4", Pw: "36", Pl: "23"},
-        { team: "Beast Amsterdam", Win: "2", Lost: "2", Sw: "6", Sl: "8", Pw: "30", Pl: "34"},
-        { team: "Amsterdam Money Gang", Win: "1", Lost: "3", Sw: "6", Sl: "10", Pw: "30", Pl: "37"}
-        ]
+        
     };
 
     APP.game = {
@@ -124,6 +112,9 @@ var APP = APP || {};
             console.log("Connectie test - ID = " + objectParse.objects[0]["id"] + " van Poule: " + objectParse.objects[0]["name"] );
             });
 
+
+
+
             //     promise.get('https://api.leaguevine.com/v1/pools/?tournament_id=19389').then(function(error, text, xhr) {
             //     if (error) {
             //       console.log('Error ' + xhr.status);
@@ -139,11 +130,7 @@ var APP = APP || {};
             //         console.log(parsedObject.objects[i].name);
             //     }
             // });
-
-          
-
-            
-            
+ 
         }
     }
 
