@@ -91,11 +91,11 @@
 		</section>
 
 		<section data-route="game" class="page">
-			<h1 data-bind="title"></h1>
-			<p data-bind="description"></p>
+			<h1 data-bind="name"></h1>
+			<p data-bind="id"></p>
 
 			<table id="state">
-			<tr>
+				<tr>
                     <th>Score</th>
                     <th>Thuis-team</th>
                     <th>Score thuis-team</th>
@@ -105,23 +105,24 @@
              </table>
 
 
-			 <section data-bind="items">
-			 <table>
-                <tr>
-                    <th data-bind="score"></th>
-                    <th data-bind="team1"></th>
-                    <th data-bind="team1Score">L</th>
-                    <th data-bind="team2"></th>
-                    <th data-bind="team2Score"></th>
+			 <section data-bind="standings">
+				 <table>
+	                <tr>
+	                    <th data-bind="games_played"></th>
+	                    <th data-bind="losses"></th>
+	                    <th data-bind="plus_minus"></th>
+	                    <th data-bind="points_allowed"></th>
+	                    <th data-bind="points_scored"></th>
+	                </tr>
+	            </table>
 
-                </tr>
-
-            </table>
-
-			  </section>
+			 </section>
 
 
 		</section>
+
+
+		
 	</article>
 
 	<!-- Libs -->
@@ -129,6 +130,7 @@
 	<script src="static/js/lib/ready.min.js" type="text/javascript"></script>
 	<script src="static/js/lib/qwery.min.js" type="text/javascript"></script>
 	<script src="static/js/lib/transparancy.min.js" type="text/javascript"></script>
+	<script src="static/js/lib/promise.min.js" type="text/javascript"></script>
 
 	<!-- Application -->
 	<script src="static/js/app.js"></script>

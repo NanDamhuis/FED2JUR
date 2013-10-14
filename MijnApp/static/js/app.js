@@ -1,149 +1,159 @@
-var JURIAPP = JURIAPP || {};
+// Namespace
+var APP = APP || {};
 
-(function() {
+// Anonymous self invoking function
+(function () {
+    "use strict";
+    
 
-//hier voeren we de data in voor de pagina's die worden gestuurd door "routie".
-    JURIAPP.ranking = {
-        title:'Standen',
-        description:'De standen tot nu toe:',
-        items:  [ 
-                    { team: "Chasing", Win: "2", Lost: "2", Sw: "7", Sl: "9", Pw: "35", Pl: "39"},
-                    { team: "Boomsquad", Win: "2", Lost: "2", Sw: "9", Sl: "8", Pw: "36", Pl: "34"},
-                    { team: "Burning Snow", Win: "3", Lost: "1", Sw: "11", Sl: "4", Pw: "36", Pl: "23"},
-                    { team: "Beast Amsterdam", Win: "2", Lost: "2", Sw: "6", Sl: "8", Pw: "30", Pl: "34"},
-                    { team: "Amsterdam Money Gang", Win: "1", Lost: "3", Sw: "6", Sl: "10", Pw: "30", Pl: "37"}
-                ] // hier wordt de ranking ingevoerd. 
-    //Win, Lost, Sw, ect. zijn allemaal data-bind classes in de DOM die hier worden aangeroepen.
-    };
 
-    JURIAPP.schedule = {
-        title:'Schema',
-        description:'Het wedstrijdschema:',
-         items: [
-            { date: "Monday, 9:00am", team1: "Chasing", team1Score: "13", team2: "Amsterdam Money Gang", team2Score: "9"},
-            { date: "Monday, 9:00am", team1: "Boomsquad", team1Score: "15", team2: "Beast Amsterdam", team2Score: "11"},
-            { date: "Monday, 10:00am", team1: "Beast Amsterdam", team1Score: "14", team2: "Amsterdam Money Gang", team2Score: "12"},
-            { date: "Monday, 10:00am", team1: "Chasing", team1Score: "5", team2: "Burning Snow", team2Score: "15"},
-            { date: "Monday, 11:00am", team1: "Boomsquad", team1Score: "11", team2: "Amsterdam Money Gang", team2Score: "15"},    
-            { date: "Monday, 11:00am", team1: "Burning Snow", team1Score: "15", team2: "Beast Amsterdam", team2Score: "6"},
-            { date: "Monday, 12:00pm", team1: "Chasing", team1Score: "8", team2: "Beast Amsterdam", team2Score: "15"},
-            { date: "Monday, 12:00pm", team1: "Boomsquad", team1Score: "15", team2: "Burning Snow", team2Score: "8"},
-            { date: "Monday, 1:00pm", team1: "Chasing", team1Score: "15", team2: "Boomsquad", team2Score: "14"},
-            { date: "Monday, 1:00pm", team1: "Burning Snow", team1Score: "15", team2: "Amsterdam Money Gang", team2Score: "11"}
-    ]
-    };
-
-    JURIAPP.game = {
-        title:'Wedstrijden',
-        description:'Een overzicht van de gespeelde wedstrijden',
+    APP.schedule = {
+        title:'Schedule',
+        description:'Hieronder ziet u het schema van het toernooi.',
         items: [
-                { score: "1", team1: "Boomsquad", team1Score: "1", team2: "Burning Snow", team2Score: "0"},
-                { score: "2", team1: "Boomsquad", team1Score: "2", team2: "Burning Snow", team2Score: "0"},
-                { score: "3", team1: "Boomsquad", team1Score: "2", team2: "Burning Snow", team2Score: "1"},
-                { score: "4", team1: "Boomsquad", team1Score: "2", team2: "Burning Snow", team2Score: "2"},
-                { score: "5", team1: "Boomsquad", team1Score: "3", team2: "Burning Snow", team2Score: "2"},
-                { score: "6", team1: "Boomsquad", team1Score: "4", team2: "Burning Snow", team2Score: "2"},
-                { score: "7", team1: "Boomsquad", team1Score: "5", team2: "Burning Snow", team2Score: "2"},
-                { score: "8", team1: "Boomsquad", team1Score: "5", team2: "Burning Snow", team2Score: "3"},
-                { score: "9", team1: "Boomsquad", team1Score: "6", team2: "Burning Snow", team2Score: "3"},
-                { score: "10", team1: "Boomsquad", team1Score: "7", team2: "Burning Snow", team2Score: "3"},
-                { score: "11", team1: "Boomsquad", team1Score: "7", team2: "Burning Snow", team2Score: "4"},
-                { score: "12", team1: "Boomsquad", team1Score: "8", team2: "Burning Snow", team2Score: "4"},
-                { score: "13", team1: "Boomsquad", team1Score: "8", team2: "Burning Snow", team2Score: "5"},
-                { score: "14", team1: "Boomsquad", team1Score: "8", team2: "Burning Snow", team2Score: "6"},
-                { score: "15", team1: "Boomsquad", team1Score: "9", team2: "Burning Snow", team2Score: "6"},
-                { score: "16", team1: "Boomsquad", team1Score: "9", team2: "Burning Snow", team2Score: "7"},
-                { score: "17", team1: "Boomsquad", team1Score: "10", team2: "Burning Snow", team2Score: "7"},
-                { score: "18", team1: "Boomsquad", team1Score: "11", team2: "Burning Snow", team2Score: "7"},
-                { score: "19", team1: "Boomsquad", team1Score: "12", team2: "Burning Snow", team2Score: "7"},
-                { score: "20", team1: "Boomsquad", team1Score: "13", team2: "Burning Snow", team2Score: "7"},
-                { score: "21", team1: "Boomsquad", team1Score: "14", team2: "Burning Snow", team2Score: "7"},
-                { score: "22", team1: "Boomsquad", team1Score: "14", team2: "Burning Snow", team2Score: "8"},
-                { score: "23", team1: "Boomsquad", team1Score: "15", team2: "Burning Snow", team2Score: "8"}
-            ]
-         };
+            { date: "Monday", team1: "Chasing", team1Score: "13", team2: "Amsterdam Money Gang", team2Score: "9"}
+        ]
+    };
 
+    APP.ranking = {
+        title:'Ranking',
+        description:'Hieronder ziet u de ranglijst van het tournooi.',
+        items: [
+            { team: "Chasing", Win: "2", Lost: "2", Sw: "7", Sl: "9", Pw: "35", Pl: "39"},
+        { team: "Boomsquad", Win: "2", Lost: "2", Sw: "9", Sl: "8", Pw: "36", Pl: "34"},
+        { team: "Burning Snow", Win: "3", Lost: "1", Sw: "11", Sl: "4", Pw: "36", Pl: "23"},
+        { team: "Beast Amsterdam", Win: "2", Lost: "2", Sw: "6", Sl: "8", Pw: "30", Pl: "34"},
+        { team: "Amsterdam Money Gang", Win: "1", Lost: "3", Sw: "6", Sl: "10", Pw: "30", Pl: "37"}
+        ]
+    };
 
-// Met dit stuk code kun je dankzij de routie library van ranking naar 
-// schedule naar game navigeren en in de index.html blijven
-// Controller Init
-    JURIAPP.controller = {
+    APP.game = {
+        
+    };
+    
+
+    // Controller Object
+    APP.controller = {
         init: function () {
-            // Initialize router
-            JURIAPP.router.init();
+            APP.router.init();
         }
     };
 
-
-JURIAPP.router = {
-
-init: function () {
-
-routie({
-    '/ranking': function() {
-    	console.log("Routie doet de ranking");
-        JURIAPP.page.render('ranking');
-
-    },
-    '/schedule': function() {
-    	console.log("Routie doet de schedule");
-        JURIAPP.page.render('schedule');
-    },
-
-    '/game': function() {
-    	console.log("Routie doet de game");
-        JURIAPP.page.render('game');
-    },
-
-    '*': function() {
-		console.log("Welcome, infamous customer!");
-        JURIAPP.page.render('ranking');
+    // Router Object
+    APP.router = {
+        init: function () {
+            routie({
+                 
+                '/schedule': function() {
+                APP.page.schedule();
+                },
+                '/ranking': function() {
+                    APP.page.ranking();
+                },
+                '/game': function() {
+                    APP.page.game();
+                },
+               
+                '*': function() {
+                    APP.page.ranking();
                 }
             });
         },
 
         change: function () {
+                        // Route = #/schedule - 2 karakters = schedule
             var route = window.location.hash.slice(2),
-            // section[data-route] roept de
+                    // Zoekt alle sections met een data-route
                 sections = qwery('section[data-route]'),
-                section = qwery('[data-route=' + route + ']')[0];
-
-
+                section = qwery('[data-route=' + route + ']')[0];  
+                
+                console.log(window.location.hash.slice(2));
             // Show active section, hide all other
             if (section) {
+                // Loopt door alle sections heen
                 for (var i=0; i < sections.length; i++){
+                    // Class active wordt weggehaald
                     sections[i].classList.remove('active');
-
                 }
+                // Geselecteerde section, schedule, wordt class active aan toegevoegd
                 section.classList.add('active');
-
             }
-
             // Default route
             if (!route) {
                 sections[0].classList.add('active');
             }
-
         }
     };
 
-    JURIAPP.page = {
-        render: function (route) {
-            // http://javascriptweblog.wordpress.com/2010/04/19/how-evil-is-eval/
-            var data = eval('JURIAPP.'+route);
+    // Pages
+    APP.page = {
+        home: function () {
+            Transparency.render(qwery('[data-route=home')[0], APP.home);
+            APP.router.change();
+        },
 
-            Transparency.render(qwery('[data-route='+route+']')[0], data);
-            JURIAPP.router.change();
+        schedule: function () {
+            Transparency.render(qwery('[data-route=schedule')[0], APP.schedule);
+            APP.router.change();    
+
+        },
+
+        ranking: function () {
+            Transparency.render(qwery('[data-route=ranking')[0], APP.ranking);
+            APP.router.change();
+        },
+
+        game: function () {
+        
+           promise.get('https://api.leaguevine.com/v1/pools/?tournament_id=19389').then(function(error, text, xhr) {
+            if (error) {
+              console.log('Error ' + xhr.status);
+              // Stop met de functie
+              return ;
+            }
+
+            var objectParse = JSON.parse(text);  
+            Transparency.render(qwery('[data-route=game')[0], APP.game); 
+            APP.router.change();    
+
+            for (var i in objectParse.objects[0].standings) {
+                // Met dank aan deze thread: http://stackoverflow.com/questions/3010840/loop-through-array-in-javascript
+               console.log("Games Played: " + objectParse.objects[0].standings[i]["games_played"]);
+            }
+
+            console.log("Connectie test - ID = " + objectParse.objects[0]["id"] + " van Poule: " + objectParse.objects[0]["name"] );
+            });
+
+            //     promise.get('https://api.leaguevine.com/v1/pools/?tournament_id=19389').then(function(error, text, xhr) {
+            //     if (error) {
+            //       console.log('Error ' + xhr.status);
+            //       // Stop met de functie
+            //       return;
+            //     }
+            //     var parsedObject = JSON.parse(text);          
+            //     Transparency.render(qwery('[data-route=league')[0], APP.game);
+            //     // console.log('The page contains ' + text.length + ' character(s).');
+            //     // console.log(text);
+            //     for(var i = 0; i < parsedObject.objects.length; i++) {
+            //         APP.game = parsedObject.objects[i];
+            //         console.log(parsedObject.objects[i].name);
+            //     }
+            // });
+
+          
+
+            
+            
         }
     }
 
+    
     // DOM ready
     domready(function () {
         // Kickstart application
-        JURIAPP.controller.init();
+        APP.controller.init();
     });
 
 
-
-
+// Functie voert zichzelf uit tussen de (). 
 })();
