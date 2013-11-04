@@ -1,3 +1,7 @@
+//#Nan - Er zitten nog geen Gestures in, er zit nog geen animatie in, er kan nog niet gepost worden, er is nog geen game pagina
+//#Nan + Goed gebruik van best practices zoals camelCase en losstaande objecten in HOOFDLETTERS, goed gebruik van de self invoking function,
+//#Nan Namespace, goed OOP
+s
 // Namespace
 var APP = APP || {};
 
@@ -60,6 +64,7 @@ var APP = APP || {};
                 }
             });
         },
+ 
 
         change: function () {
                         // Route = #/schedule - 2 karakters = schedule
