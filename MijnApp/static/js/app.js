@@ -11,11 +11,12 @@ var APP = APP || {};
        
     };
 
-    APP.ranking = {
+    APP.ranking = { 
         
     };
 
-    APP.game = {
+    APP.pool = {
+        
         
     };
     
@@ -24,6 +25,18 @@ var APP = APP || {};
     APP.controller = {
         init: function () {
             APP.router.init();
+        }
+    };
+
+    APP.spinner = {
+        spinner: {
+            spinnerObject: document.getElementById("loader"), 
+            show: function () {
+                this.spinnerObject.className = "spin";
+            },
+            hide: function () {
+                this.spinnerObject.className ="stopspin";
+            }
         }
     };
 
@@ -38,8 +51,8 @@ var APP = APP || {};
                 '/ranking': function() {
                     APP.page.ranking();
                 },
-                '/game': function() {
-                    APP.page.game();
+                '/pool': function() {
+                    APP.page.pool();
                 },
                
                 '*': function() {
@@ -80,56 +93,81 @@ var APP = APP || {};
             APP.router.change();
         },
 
-        schedule: function () {
+        ranking: function () {
             Transparency.render(qwery('[data-route=schedule')[0], APP.schedule);
             APP.router.change();    
 
         },
 
-        ranking: function () {
-            Transparency.render(qwery('[data-route=ranking')[0], APP.ranking);
-            APP.router.change();
-        },
+        schedule: function () {
 
-        game: function () {
-        
-           promise.get('https://api.leaguevine.com/v1/pools/?tournament_id=19389').then(function(error, text, xhr) {
+            APP.spinner.spinner.show();
+            promise.get('https://api.leaguevine.com/v1/games/?season_id=20167&tournament_id=19389').then(function(error, text, xhr) {
             if (error) {
               console.log('Error ' + xhr.status);
               // Stop met de functie
               return ;
             }
 
-            var objectParse = JSON.parse(text);  
-            Transparency.render(qwery('[data-route=game')[0], APP.game); 
-            APP.router.change();    
 
-            for (var i in objectParse.objects[0].standings) {
-                // Met dank aan deze thread: http://stackoverflow.com/questions/3010840/loop-through-array-in-javascript
-               console.log("Games Played: " + objectParse.objects[0].standings[i]["games_played"]);
-            }
+// Dit is een manier van Koop en mij
 
-            console.log("Connectie test - ID = " + objectParse.objects[0]["id"] + " van Poule: " + objectParse.objects[0]["name"] );
+            var objectParse = JSON.parse(text);
+            var data = objectParse.objects; 
+            console.log("data " + data)
+            console.log("hoe lang is mijn object? " + data.length)
+
+             var teamData = [] //new Array;
+            for (var i = 0; i < data.length; i++) {
+
+                
+                var team1 = data[i].team_1.name;  
+                var team2 = data[i].team_2.name;
+                var startTime = data[i].start_time;
+                console.log(i + " - ", data[i].team_1.name);
+                teamData.push({team1: team1, team2: team2, startTime: startTime});
+                  
+
+            } //end: for loop pools
+
+            APP.spinner.spinner.hide();
+            Transparency.render(qwery('[data-route=schedule')[0], teamData);
+            APP.router.change();
+
+
+
+        });
+
+
+         
+        },
+
+        pool: function () {
+        
+            APP.spinner.spinner.show();
+           promise.get('https://api.leaguevine.com/v1/pools/?tournament_id=19389&access_token=8ec88ebf01').then(function(error, text, xhr) {
+                if (error) {
+                  console.log('Error ' + xhr.status);
+                  // Stop met de functie
+                  return;
+                }
+
+                //Dit is een simpelere manier van Joost
+
+                var parsedObject = JSON.parse(text);
+
+                APP.pool = parsedObject.objects;
+
+                 APP.spinner.spinner.hide();
+
+                 Transparency.render(qwery('[data-route=pool')[0], parsedObject.objects); 
+        
+
+
             });
 
 
-
-
-            //     promise.get('https://api.leaguevine.com/v1/pools/?tournament_id=19389').then(function(error, text, xhr) {
-            //     if (error) {
-            //       console.log('Error ' + xhr.status);
-            //       // Stop met de functie
-            //       return;
-            //     }
-            //     var parsedObject = JSON.parse(text);          
-            //     Transparency.render(qwery('[data-route=league')[0], APP.game);
-            //     // console.log('The page contains ' + text.length + ' character(s).');
-            //     // console.log(text);
-            //     for(var i = 0; i < parsedObject.objects.length; i++) {
-            //         APP.game = parsedObject.objects[i];
-            //         console.log(parsedObject.objects[i].name);
-            //     }
-            // });
+            APP.router.change();  
  
         }
     }

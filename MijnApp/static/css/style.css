@@ -1,28 +1,78 @@
-	 section.page{
+@font-face
+{
+font-family: nexa;
+src: url('NexaLight.otf');
+}
+
+body {
+	background-color: #7acae7;
+	font-family: nexa;
+	width: auto;
+}
+
+header {
+	text-align: center;
+	background-color: #5763ff;
+	width: 101.8%;
+	height: 10%;
+	padding-top: 1%;
+	margin-left: -1%;
+	margin-top: -1.7%;
+}
+
+header h1 {
+	color: #FFFFFF;
+}
+
+article {
+	width:100%;
+	margin: auto;
+}
+nav ul li {
+		display: inline-block;
+		margin-left: 5%;
+		margin-right: 7%;
+}
+
+nav ul li a{
+		text-decoration: none;
+}
+
+nav ul li a:visited{
+		color:#7acae7;
+}
+
+section.page{
 	 	display:none;
-	 }
-	 section.page.active{
+ }
+section.page.active{
 	 	display:block;
-	 }
+}
 
 table#state th {
-	background-color: #FF9999;
 }
 
 table {
-	width:90%;
+	width:96%;
+	margin-left: 2%;
+	margin-right: 2%;
+
+}
+
+table th {
+			border-style: solid;
+	border-color: #FFFFFF;
 }
 	 
 	
 
 section	table th:first-child {
-	 	width:25%;
-	 	min-width: 220px;
-	 	background-color: #FF0000;
+	 	width:5%;
+	 	
 	 }
 
 section	table th:not(:first-child) {
-    	background-color: #FF0000;
+    	
 	 	width:10%;
 }
 
@@ -30,12 +80,58 @@ section	table th:not(:first-child) {
 
 
 section + section table th:first-child {
-		background-color: #FF0000;
 	 	width:1%;
-	 	min-width: 120px;
+	 	min-width: 80px;
 	 }
 
 section  + section	table th:not(:first-child) {
-    	background-color: #FF0000;
+
+}
+span#poolname {
+}
+
+h1#pool {
+	font-size: 2em;
+	margin-left: 2.5%;
+}
+
+
+
+
+
+
+
+#loader{
+  border:0;
+  width:80px;
+  padding:0px;
+  margin-top: 190px;
+  margin-left: calc(50% - 40px);
+  margin-left: -webkit-calc(50% - 40px);
+  margin-left: -moz-calc(50% - 40px);
+  position: absolute;
+}
+
+#spin {
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
+  border:dashed 5px #5763ff;
+
+  -webkit-animation-name: spin;
+  -webkit-animation-duration: 1.5s;
+  -webkit-animation-iteration-count: infinite;
+
+}
+
+@-webkit-keyframes spin {
+  from   {  -webkit-transform: rotate(0deg); }
+  to   {  -webkit-transform: rotate(360deg); }
+}
+
+
+
+.stopspin {
+	display: none;
 }
 
